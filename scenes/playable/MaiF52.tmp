@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://daa0rwk2w7jkx"]
+
+[ext_resource type="PackedScene" uid="uid://kyhuexda18r4" path="res://scenes/Cursor.tscn" id="1_0odk0"]
+[ext_resource type="PackedScene" uid="uid://csh21uxeu5xu2" path="res://scenes/Hole.tscn" id="2_4xhsf"]
+[ext_resource type="Script" path="res://scripts/tourus.gd" id="3_674kp"]
+[ext_resource type="PackedScene" uid="uid://dh1rguf5h0rbj" path="res://art/tourus.aseprite" id="3_qn76t"]
+[ext_resource type="Script" path="res://scripts/boolean_body.gd" id="4_o7730"]
+[ext_resource type="Script" path="res://scripts/extensions/collision_polygon_2d.gd" id="5_8tsu6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t3qb4"]
+friction = 0.8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frrcj"]
+size = Vector2(12, 12)
+
+[sub_resource type="GDScript" id="GDScript_f5r8l"]
+script/source = "extends VisibleOnScreenNotifier2D
+
+func screen_exited():
+	
+"
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Cursor" parent="." instance=ExtResource("1_0odk0")]
+position = Vector2(0, 24)
+
+[node name="Hole" parent="." instance=ExtResource("2_4xhsf")]
+position = Vector2(0, 24)
+collision_layer = 32
+continuous_cd = 0
+velMultiplier = 14.0
+show_debug_polygon = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Tourus" type="RigidBody2D" parent="."]
+position = Vector2(-72, 16)
+collision_mask = 9
+physics_material_override = SubResource("PhysicsMaterial_t3qb4")
+lock_rotation = true
+script = ExtResource("3_674kp")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tourus"]
+shape = SubResource("RectangleShape2D_frrcj")
+metadata/_edit_group_ = true
+
+[node name="tourus" parent="Tourus" instance=ExtResource("3_qn76t")]
+z_index = 2
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Tourus"]
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(0.6, 0.6)
+script = SubResource("GDScript_f5r8l")
+
+[node name="Solid" type="StaticBody2D" parent="."]
+script = ExtResource("4_o7730")
+boolean_type = 1
+show_debug_polygon = true
+
+[node name="OverlapDetector" type="Area2D" parent="Solid"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Solid/OverlapDetector"]
+polygon = PackedVector2Array(-288, -168, -288, 192, -144, 192, 304, 192, 304, 144, -144, 144, -144, 104, -104, 104, -104, 64, 24, 56, 24, 24, -144, 24, -144, 56, -168, 72, -232, 72, -256, 56, -256, -56, -240, -144, -96, -168)
+script = ExtResource("5_8tsu6")
+
+[node name="Solid2" type="StaticBody2D" parent="."]
+script = ExtResource("4_o7730")
+boolean_type = 1
+show_debug_polygon = true
+
+[node name="OverlapDetector" type="Area2D" parent="Solid2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Solid2/OverlapDetector"]
+position = Vector2(0, -56)
+polygon = PackedVector2Array(104, 48, 101, 68, 155, 94, 161, 157, 197, 152, 193, 95, 288, 48, 288, -24, 232, -24, 224, 48)
+script = ExtResource("5_8tsu6")
+
+[node name="Solid3" type="StaticBody2D" parent="."]
+script = ExtResource("4_o7730")
+boolean_type = 1
+show_debug_polygon = true
+
+[node name="OverlapDetector" type="Area2D" parent="Solid3"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Solid3/OverlapDetector"]
+polygon = PackedVector2Array(-184, -24, -192, 0, -216, 0, -224, 16, -176, 24, -152, -32, -80, -80, 168, -136, -128, -104, -183.375, -71.6976, -192, -56, -176, -56)
+script = ExtResource("5_8tsu6")
+
+[connection signal="screen_exited" from="Tourus/VisibleOnScreenNotifier2D" to="Tourus" method="_on_screen_exited"]

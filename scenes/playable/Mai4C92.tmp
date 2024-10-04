@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://daa0rwk2w7jkx"]
+
+[ext_resource type="PackedScene" uid="uid://kyhuexda18r4" path="res://scenes/Cursor.tscn" id="1_0odk0"]
+[ext_resource type="PackedScene" uid="uid://csh21uxeu5xu2" path="res://scenes/Hole.tscn" id="2_4xhsf"]
+[ext_resource type="PackedScene" uid="uid://dh1rguf5h0rbj" path="res://art/tourus.aseprite" id="3_qn76t"]
+[ext_resource type="Script" path="res://scripts/boolean_body.gd" id="4_o7730"]
+[ext_resource type="Script" path="res://scripts/extensions/collision_polygon_2d.gd" id="5_8tsu6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frrcj"]
+size = Vector2(12, 12)
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Cursor" parent="." instance=ExtResource("1_0odk0")]
+position = Vector2(0, 24)
+
+[node name="Hole" parent="." instance=ExtResource("2_4xhsf")]
+position = Vector2(0, 24)
+collision_layer = 32
+continuous_cd = 0
+velMultiplier = 14.0
+boolean_type = null
+show_debug_polygon = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Tourus" type="RigidBody2D" parent="."]
+position = Vector2(0, 24)
+collision_mask = 9
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tourus"]
+shape = SubResource("RectangleShape2D_frrcj")
+metadata/_edit_group_ = true
+
+[node name="tourus" parent="Tourus" instance=ExtResource("3_qn76t")]
+z_index = 2
+
+[node name="Solid" type="StaticBody2D" parent="."]
+script = ExtResource("4_o7730")
+boolean_type = 1
+show_debug_polygon = true
+
+[node name="OverlapDetector" type="Area2D" parent="Solid"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Solid/OverlapDetector"]
+polygon = PackedVector2Array(-256, 32, -224, 32, -224, 0, 256, 0, 256, -32, 96, -32, 96, -112, 64, -112, -8, -56, -16, -144, -88, -80, -128, -80, -128, -32, -288, -32, -288, 160, 256, 160, 256, 128, 128, 128, 128, 64, -128, 64, -128, 104, -256, 56)
+script = ExtResource("5_8tsu6")

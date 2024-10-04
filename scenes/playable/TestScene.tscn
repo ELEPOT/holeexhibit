@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxvty8gthg4i5"]
+
+[ext_resource type="PackedScene" uid="uid://kyhuexda18r4" path="res://scenes/Cursor.tscn" id="1_rqa76"]
+[ext_resource type="PackedScene" uid="uid://csh21uxeu5xu2" path="res://scenes/Hole.tscn" id="2_jii3i"]
+[ext_resource type="PackedScene" uid="uid://d17ghvkcnop83" path="res://scenes/Tourus.tscn" id="3_seocm"]
+[ext_resource type="Script" path="res://scripts/boolean_body.gd" id="4_jk5x5"]
+[ext_resource type="Script" path="res://scripts/extensions/collision_polygon2d_ext.gd" id="5_bxl0a"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Cursor" parent="." instance=ExtResource("1_rqa76")]
+position = Vector2(0, 24)
+
+[node name="Hole" parent="." instance=ExtResource("2_jii3i")]
+position = Vector2(0, 24)
+collision_layer = 32
+continuous_cd = 0
+velMultiplier = 14.0
+show_debug_polygon = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Tourus" parent="." instance=ExtResource("3_seocm")]
+
+[node name="Solid" type="StaticBody2D" parent="."]
+script = ExtResource("4_jk5x5")
+boolean_type = 1
+show_debug_polygon = true
+
+[node name="OverlapDetector" type="Area2D" parent="Solid"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Solid/OverlapDetector"]
+polygon = PackedVector2Array(-288, -168, -288, 192, -144, 192, 304, 192, 304, 144, -144, 144, -144, 104, -104, 104, -104, 56, 24, 48, 24, 24, -144, 24, -144, 72, -240, 72, -256, 32, -256, -56, -240, -144, -96, -168)
+script = ExtResource("5_bxl0a")
+
+[node name="Solid2" type="StaticBody2D" parent="."]
+script = ExtResource("4_jk5x5")
+boolean_type = 1
+show_debug_polygon = true
+
+[node name="OverlapDetector" type="Area2D" parent="Solid2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Solid2/OverlapDetector"]
+position = Vector2(0, -56)
+polygon = PackedVector2Array(104, 48, 24, 24, 24, 32, 104, 72, 155, 94, 161, 157, 197, 152, 193, 95, 288, 48, 288, -24, 232, -24, 224, 48)
+script = ExtResource("5_bxl0a")
+
+[node name="Solid3" type="StaticBody2D" parent="."]
+script = ExtResource("4_jk5x5")
+boolean_type = 1
+show_debug_polygon = true
+
+[node name="OverlapDetector" type="Area2D" parent="Solid3"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Solid3/OverlapDetector"]
+polygon = PackedVector2Array(-184, -24, -192, 0, -216, 0, -224, 16, -176, 24, -152, -32, -80, -80, 168, -128, 168, -136, -128, -104, -183.375, -71.6976, -192, -56, -176, -56)
+script = ExtResource("5_bxl0a")

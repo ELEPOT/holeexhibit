@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://bf8s1nx62lbki"]
+
+[ext_resource type="PackedScene" uid="uid://kyhuexda18r4" path="res://scenes/Cursor.tscn" id="1_0odk0"]
+[ext_resource type="PackedScene" uid="uid://csh21uxeu5xu2" path="res://scenes/Hole.tscn" id="2_4xhsf"]
+[ext_resource type="PackedScene" uid="uid://d17ghvkcnop83" path="res://scenes/Tourus.tscn" id="3_fj46q"]
+[ext_resource type="Script" path="res://scripts/boolean_body.gd" id="4_o7730"]
+[ext_resource type="Script" path="res://scripts/extensions/collision_polygon2d_ext.gd" id="5_d14ci"]
+[ext_resource type="PackedScene" uid="uid://drdh432l5t3c2" path="res://art/levels/ticket_window/background.aseprite" id="6_jif15"]
+[ext_resource type="PackedScene" uid="uid://lu1y3dlvpn5l" path="res://art/levels/ticket_window/sky.aseprite" id="6_y2ygw"]
+[ext_resource type="PackedScene" uid="uid://dm3yn3md5u6d4" path="res://art/levels/ticket_window/mainground.aseprite" id="7_yo7hb"]
+[ext_resource type="PackedScene" uid="uid://kgj2pqyi85qw" path="res://art/levels/ticket_window/overlay.aseprite" id="8_bi8a6"]
+[ext_resource type="Shader" path="res://shaders/masked.gdshader" id="8_gqjm4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jfcq5"]
+shader = ExtResource("8_gqjm4")
+shader_parameter/rect_size = 38.0
+shader_parameter/location_x = 0.0
+shader_parameter/location_y = 0.0
+shader_parameter/ratio_width = 640.0
+shader_parameter/ratio_height = 360.0
+shader_parameter/invert_mask = true
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Cursor" parent="." instance=ExtResource("1_0odk0")]
+position = Vector2(0, 24)
+
+[node name="Hole" parent="." instance=ExtResource("2_4xhsf")]
+position = Vector2(0, 24)
+collision_layer = 32
+lock_rotation = true
+continuous_cd = 0
+velMultiplier = 14.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Tourus" parent="." instance=ExtResource("3_fj46q")]
+metadata/_edit_group_ = true
+
+[node name="Solid" type="StaticBody2D" parent="."]
+script = ExtResource("4_o7730")
+boolean_type = 1
+
+[node name="OverlapDetector" type="Area2D" parent="Solid"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Solid/OverlapDetector"]
+visible = false
+position = Vector2(-8, -24)
+polygon = PackedVector2Array(-312, 169, -295, 169, -295, 155, -276, 155, -276, 140, 285, 140, 285, 11, 24, 11, 24, -156, 328, -156, 328, 204, -312, 204)
+script = ExtResource("5_d14ci")
+
+[node name="sky" parent="." instance=ExtResource("6_y2ygw")]
+light_mask = 0
+
+[node name="background" parent="." instance=ExtResource("6_jif15")]
+
+[node name="mainground" parent="." instance=ExtResource("7_yo7hb")]
+light_mask = 0
+material = SubResource("ShaderMaterial_jfcq5")
+rotation = -0.00171216
+
+[node name="overlay" parent="." instance=ExtResource("8_bi8a6")]

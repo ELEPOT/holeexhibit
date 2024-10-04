@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://daa0rwk2w7jkx"]
+
+[ext_resource type="PackedScene" uid="uid://kyhuexda18r4" path="res://scenes/Cursor.tscn" id="1_0odk0"]
+[ext_resource type="PackedScene" uid="uid://csh21uxeu5xu2" path="res://scenes/Hole.tscn" id="2_4xhsf"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Cursor" parent="." instance=ExtResource("1_0odk0")]
+
+[node name="Hole" parent="." instance=ExtResource("2_4xhsf")]
+velMultiplier = 10.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-256, 32, -224, 32, -224, 0, 256, 0, 256, -32, -288, -32, -288, 160, 256, 160, 256, 128, 128, 128, 128, 64, -128, 64, -128, 128, -256, 128)
+
+[node name="Camera2D" type="Camera2D" parent="."]

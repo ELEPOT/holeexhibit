@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://csh21uxeu5xu2"]
+
+[ext_resource type="Script" path="res://scripts/hole.gd" id="1_axg4p"]
+[ext_resource type="Script" path="res://scripts/extensions/collision_polygon2d_ext.gd" id="2_xdtix"]
+
+[node name="Hole" type="RigidBody2D"]
+z_index = 1
+gravity_scale = 0.0
+continuous_cd = 2
+script = ExtResource("1_axg4p")
+metadata/_edit_group_ = true
+
+[node name="OverlapDetector" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OverlapDetector"]
+polygon = PackedVector2Array(-19, 19, -19, -19, 19, -19, 19, 19)
+script = ExtResource("2_xdtix")
