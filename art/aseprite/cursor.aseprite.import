@@ -2,13 +2,13 @@
 
 importer="Aseprite AnimatedSprite2D Import"
 type="PackedScene"
-uid="uid://dm3yn3md5u6d4"
-path="res://.godot/imported/mainground.aseprite-fbac30c610f5f3e7871406f01314d7bc.scn"
+uid="uid://b883pgh0jf184"
+path="res://.godot/imported/cursor.aseprite-73701f4c18d8ba7efaba39c130398d22.scn"
 
 [deps]
 
-source_file="res://art/levels/ticket_window/mainground.aseprite"
-dest_files=["res://.godot/imported/mainground.aseprite-fbac30c610f5f3e7871406f01314d7bc.scn"]
+source_file="res://art/aseprite/cursor.aseprite"
+dest_files=["res://.godot/imported/cursor.aseprite-73701f4c18d8ba7efaba39c130398d22.scn"]
 
 [params]
 

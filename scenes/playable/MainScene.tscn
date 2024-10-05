@@ -1,17 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://bf8s1nx62lbki"]
+[gd_scene load_steps=18 format=3 uid="uid://dqn7hkmudj4tg"]
 
 [ext_resource type="PackedScene" uid="uid://kyhuexda18r4" path="res://scenes/Cursor.tscn" id="1_0odk0"]
 [ext_resource type="PackedScene" uid="uid://csh21uxeu5xu2" path="res://scenes/Hole.tscn" id="2_4xhsf"]
 [ext_resource type="PackedScene" uid="uid://d17ghvkcnop83" path="res://scenes/Tourus.tscn" id="3_fj46q"]
 [ext_resource type="Script" path="res://scripts/boolean_body.gd" id="4_o7730"]
 [ext_resource type="Script" path="res://scripts/extensions/collision_polygon2d_ext.gd" id="5_d14ci"]
-[ext_resource type="PackedScene" uid="uid://drdh432l5t3c2" path="res://art/levels/ticket_window/background.aseprite" id="6_jif15"]
-[ext_resource type="PackedScene" uid="uid://lu1y3dlvpn5l" path="res://art/levels/ticket_window/sky.aseprite" id="6_y2ygw"]
-[ext_resource type="PackedScene" uid="uid://dm3yn3md5u6d4" path="res://art/levels/ticket_window/mainground.aseprite" id="7_yo7hb"]
-[ext_resource type="PackedScene" uid="uid://kgj2pqyi85qw" path="res://art/levels/ticket_window/overlay.aseprite" id="8_bi8a6"]
+[ext_resource type="Texture2D" uid="uid://bw6xhh6oe8mug" path="res://art/exported/background.png" id="6_das2j"]
+[ext_resource type="Texture2D" uid="uid://dav4iamoy6cr1" path="res://art/exported/sky.png" id="6_weogf"]
+[ext_resource type="Texture2D" uid="uid://bsaggujnyi2tb" path="res://art/exported/mainground.png" id="8_cqrb5"]
 [ext_resource type="Shader" path="res://shaders/masked.gdshader" id="8_gqjm4"]
+[ext_resource type="Texture2D" uid="uid://b5gsygrws7yo0" path="res://art/exported/overlay.png" id="9_gm6fr"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jfcq5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svkju"]
 shader = ExtResource("8_gqjm4")
 shader_parameter/rect_size = 38.0
 shader_parameter/location_x = 0.0
@@ -19,6 +19,30 @@ shader_parameter/location_y = 0.0
 shader_parameter/ratio_width = 640.0
 shader_parameter/ratio_height = 360.0
 shader_parameter/invert_mask = true
+
+[sub_resource type="Gradient" id="Gradient_jn5ip"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nrk35"]
+gradient = SubResource("Gradient_jn5ip")
+fill_from = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_btaxb"]
+offsets = PackedFloat32Array(0.367542, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xf43k"]
+gradient = SubResource("Gradient_btaxb")
+width = 250
+height = 150
+fill_from = Vector2(0.0563107, 1)
+fill_to = Vector2(0.532039, 0)
+
+[sub_resource type="Gradient" id="Gradient_0yrp7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wrkni"]
+gradient = SubResource("Gradient_0yrp7")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
 
 [node name="MainScene" type="Node2D"]
 
@@ -35,7 +59,6 @@ velMultiplier = 14.0
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Tourus" parent="." instance=ExtResource("3_fj46q")]
-metadata/_edit_group_ = true
 
 [node name="Solid" type="StaticBody2D" parent="."]
 script = ExtResource("4_o7730")
@@ -49,14 +72,62 @@ position = Vector2(-8, -24)
 polygon = PackedVector2Array(-312, 169, -295, 169, -295, 155, -276, 155, -276, 140, 285, 140, 285, 11, 24, 11, 24, -156, 328, -156, 328, 204, -312, 204)
 script = ExtResource("5_d14ci")
 
-[node name="sky" parent="." instance=ExtResource("6_y2ygw")]
-light_mask = 0
+[node name="sky" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("6_weogf")
 
-[node name="background" parent="." instance=ExtResource("6_jif15")]
+[node name="background" type="Sprite2D" parent="."]
+z_index = -10
+texture = ExtResource("6_das2j")
 
-[node name="mainground" parent="." instance=ExtResource("7_yo7hb")]
-light_mask = 0
-material = SubResource("ShaderMaterial_jfcq5")
-rotation = -0.00171216
+[node name="mainground_masked" type="Sprite2D" parent="."]
+z_index = -5
+texture = ExtResource("8_cqrb5")
 
-[node name="overlay" parent="." instance=ExtResource("8_bi8a6")]
+[node name="mainground" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_svkju")
+texture = ExtResource("8_cqrb5")
+
+[node name="overlay" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(0, 166)
+texture = ExtResource("9_gm6fr")
+
+[node name="MaingroundAmbient" type="PointLight2D" parent="."]
+position = Vector2(-3.8147e-06, -1.04904e-05)
+scale = Vector2(10, 5.625)
+color = Color(1, 0.98, 0.76, 1)
+energy = 0.17
+range_z_min = 0
+range_z_max = 0
+texture = SubResource("GradientTexture2D_nrk35")
+
+[node name="BackgroundShadow" type="PointLight2D" parent="."]
+position = Vector2(155, 51.4999)
+scale = Vector2(0.976, 0.860002)
+color = Color(1, 0.98, 0.76, 1)
+energy = 0.12
+blend_mode = 1
+range_z_min = -10
+range_z_max = -10
+texture = SubResource("GradientTexture2D_xf43k")
+
+[node name="BackgroundShadow2" type="PointLight2D" parent="."]
+position = Vector2(155, 117)
+scale = Vector2(3.8125, 0.270188)
+color = Color(1, 0.98, 0.76, 1)
+energy = 0.12
+blend_mode = 1
+range_z_min = -10
+range_z_max = -10
+texture = SubResource("GradientTexture2D_wrkni")
+
+[node name="BackgroundShadow3" type="PointLight2D" parent="."]
+position = Vector2(286, 49)
+rotation = -1.5708
+scale = Vector2(2.92383, 0.567751)
+color = Color(1, 0.98, 0.76, 1)
+energy = 0.17
+range_z_min = -10
+range_z_max = -10
+texture = SubResource("GradientTexture2D_wrkni")

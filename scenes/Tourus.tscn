@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d17ghvkcnop83"]
+[gd_scene load_steps=17 format=3 uid="uid://d17ghvkcnop83"]
 
-[ext_resource type="Script" path="res://scripts/tourus.gd" id="1_32see"]
-[ext_resource type="PackedScene" uid="uid://dh1rguf5h0rbj" path="res://art/tourus.aseprite" id="2_efltn"]
+[ext_resource type="Script" path="res://scripts/tourus.gd" id="1_gdqb1"]
+[ext_resource type="Texture2D" uid="uid://bggl4yyiotboy" path="res://art/exported/tourus.png" id="2_h067a"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t3qb4"]
 friction = 0.8
@@ -13,38 +13,107 @@ func screen_exited():
 	get_tree().reload_current_scene
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xp7vx"]
-size = Vector2(12, 12)
+[sub_resource type="AtlasTexture" id="AtlasTexture_080pq"]
+atlas = ExtResource("2_h067a")
+region = Rect2(0, 0, 12, 12)
 
-[node name="Tourus" type="Node2D"]
-script = ExtResource("1_32see")
-damp = 250.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa1vp"]
+atlas = ExtResource("2_h067a")
+region = Rect2(12, 0, 12, 12)
 
-[node name="Outside" type="RigidBody2D" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yeav"]
+atlas = ExtResource("2_h067a")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5umi4"]
+atlas = ExtResource("2_h067a")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abxlk"]
+atlas = ExtResource("2_h067a")
+region = Rect2(0, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekaam"]
+atlas = ExtResource("2_h067a")
+region = Rect2(12, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv005"]
+atlas = ExtResource("2_h067a")
+region = Rect2(24, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx8bx"]
+atlas = ExtResource("2_h067a")
+region = Rect2(36, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1llh"]
+atlas = ExtResource("2_h067a")
+region = Rect2(0, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7ckw"]
+atlas = ExtResource("2_h067a")
+region = Rect2(12, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huo73"]
+atlas = ExtResource("2_h067a")
+region = Rect2(24, 24, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8n7mf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_080pq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa1vp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yeav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5umi4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abxlk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekaam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qv005")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx8bx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1llh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7ckw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huo73")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Tourus" type="RigidBody2D"]
 collision_mask = 9
 physics_material_override = SubResource("PhysicsMaterial_t3qb4")
 lock_rotation = true
+script = ExtResource("1_gdqb1")
 metadata/_edit_group_ = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Outside"]
-polygon = PackedVector2Array(-10, -10, 10, -10, 10, 9, 9, 10, -9, 10, -10, 9)
-
-[node name="Inside" type="RigidBody2D" parent="."]
-collision_layer = 0
-collision_mask = 8
-lock_rotation = true
-linear_damp = 5.0
-
-[node name="tourus" parent="Inside" instance=ExtResource("2_efltn")]
-z_index = 2
-speed_scale = 0.0
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Inside"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.6, 0.6)
 script = SubResource("GDScript_f5r8l")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside"]
-shape = SubResource("RectangleShape2D_xp7vx")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-9, -9, 9, -9, 9, 8, 8, 9, -8, 9, -9, 8)
 
-[connection signal="screen_exited" from="Inside/VisibleOnScreenNotifier2D" to="Outside" method="_on_screen_exited"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8n7mf")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

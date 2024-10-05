@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvckysgx6qa2l"
-path="res://.godot/imported/tourus.png-b8a62db45a146413d931f2f66663df31.ctex"
+uid="uid://dav4iamoy6cr1"
+path="res://.godot/imported/sky.png-40e9edbc6eed21cc74cc921dce15f019.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/tourus.png"
-dest_files=["res://.godot/imported/tourus.png-b8a62db45a146413d931f2f66663df31.ctex"]
+source_file="res://art/exported/sky.png"
+dest_files=["res://.godot/imported/sky.png-40e9edbc6eed21cc74cc921dce15f019.ctex"]
 
 [params]
 

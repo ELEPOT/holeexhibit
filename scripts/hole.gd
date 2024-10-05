@@ -3,7 +3,7 @@ class_name Hole
 
 @export var velMultiplier: float
 
-@onready var mainground: AnimatedSprite2D = $"/root/MainScene/mainground"
+@onready var mainground: Sprite2D = $"/root/MainScene/mainground"
 
 var self_rigidbody: RigidBody2D = self as PhysicsBody2D as RigidBody2D
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsaggujnyi2tb"
-path="res://.godot/imported/mainground.png-032e757d3f250e20ee26549d9f417b6b.ctex"
+path="res://.godot/imported/mainground.png-8680fa2b0f930a73748f60cd2ad987a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/levels/ticket_window/mainground.png"
-dest_files=["res://.godot/imported/mainground.png-032e757d3f250e20ee26549d9f417b6b.ctex"]
+source_file="res://art/exported/mainground.png"
+dest_files=["res://.godot/imported/mainground.png-8680fa2b0f930a73748f60cd2ad987a2.ctex"]
 
 [params]
 

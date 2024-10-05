@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5gsygrws7yo0"
-path="res://.godot/imported/overlay.png-3a34086b6f28d6bfbc955ff60f3fb5dc.ctex"
+uid="uid://bggl4yyiotboy"
+path="res://.godot/imported/tourus.png-913c437cb9e1920dbd0f6cfc003b82d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/levels/ticket_window/overlay.png"
-dest_files=["res://.godot/imported/overlay.png-3a34086b6f28d6bfbc955ff60f3fb5dc.ctex"]
+source_file="res://art/exported/tourus.png"
+dest_files=["res://.godot/imported/tourus.png-913c437cb9e1920dbd0f6cfc003b82d7.ctex"]
 
 [params]
 

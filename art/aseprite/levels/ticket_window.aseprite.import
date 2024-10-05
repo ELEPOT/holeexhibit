@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ec7x45qpo3ms"
-path="res://.godot/imported/ticket_window.aseprite-226cc6b917607100287d455ac1499205.ctex"
+uid="uid://bqcxy3lgyobsr"
+path="res://.godot/imported/ticket_window.aseprite-482f2c7a40d59970aaab6389d81988cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ticket_window.aseprite"
-dest_files=["res://.godot/imported/ticket_window.aseprite-226cc6b917607100287d455ac1499205.ctex"]
+source_file="res://art/aseprite/levels/ticket_window.aseprite"
+dest_files=["res://.godot/imported/ticket_window.aseprite-482f2c7a40d59970aaab6389d81988cf.ctex"]
 
 [params]
 

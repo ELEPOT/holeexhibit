@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://kyhuexda18r4"]
 
-[ext_resource type="PackedScene" uid="uid://b883pgh0jf184" path="res://art/cursor.aseprite" id="1_6wnjl"]
 [ext_resource type="Script" path="res://scripts/cursor.gd" id="1_hvfso"]
+[ext_resource type="Texture2D" uid="uid://brmvenyeahr34" path="res://art/exported/cursor.png" id="2_63hu7"]
 
 [node name="Cursor" type="Node2D"]
 script = ExtResource("1_hvfso")
 metadata/_edit_group_ = true
 
-[node name="cursor" parent="." instance=ExtResource("1_6wnjl")]
-z_index = 100
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_63hu7")

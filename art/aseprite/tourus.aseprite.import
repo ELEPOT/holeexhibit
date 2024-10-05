@@ -2,13 +2,13 @@
 
 importer="Aseprite AnimatedSprite2D Import"
 type="PackedScene"
-uid="uid://d0u8ap8m7xnnn"
-path="res://.godot/imported/hole.aseprite-6c051b7e7c80a69da4918ef60c3248d1.scn"
+uid="uid://dh1rguf5h0rbj"
+path="res://.godot/imported/tourus.aseprite-04b0769b22934dcdd6545d2a97590bf6.scn"
 
 [deps]
 
-source_file="res://art/hole.aseprite"
-dest_files=["res://.godot/imported/hole.aseprite-6c051b7e7c80a69da4918ef60c3248d1.scn"]
+source_file="res://art/aseprite/tourus.aseprite"
+dest_files=["res://.godot/imported/tourus.aseprite-04b0769b22934dcdd6545d2a97590bf6.scn"]
 
 [params]
 

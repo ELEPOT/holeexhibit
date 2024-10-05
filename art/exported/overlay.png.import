@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw6xhh6oe8mug"
-path="res://.godot/imported/background.png-fe5672ffa52050ea1607d042dd804afe.ctex"
+uid="uid://b5gsygrws7yo0"
+path="res://.godot/imported/overlay.png-caee59eb35da0d1c70cdc0c522ca25c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/levels/ticket_window/background.png"
-dest_files=["res://.godot/imported/background.png-fe5672ffa52050ea1607d042dd804afe.ctex"]
+source_file="res://art/exported/overlay.png"
+dest_files=["res://.godot/imported/overlay.png-caee59eb35da0d1c70cdc0c522ca25c9.ctex"]
 
 [params]
 

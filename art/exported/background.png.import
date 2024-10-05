@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n1jya2jkmwp"
-path="res://.godot/imported/ticket_window_0.png-cf1e4825e4b8b9ef0ef0c4f0ecccbc94.ctex"
+uid="uid://bw6xhh6oe8mug"
+path="res://.godot/imported/background.png-45a272ca45bf215e26db17269ead55cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ticket_window_0.png"
-dest_files=["res://.godot/imported/ticket_window_0.png-cf1e4825e4b8b9ef0ef0c4f0ecccbc94.ctex"]
+source_file="res://art/exported/background.png"
+dest_files=["res://.godot/imported/background.png-45a272ca45bf215e26db17269ead55cf.ctex"]
 
 [params]
 
